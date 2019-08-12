@@ -1,0 +1,111 @@
+swagger: '2.0' 
+info: 
+  version: v2 
+  title: SwaggerDemo API 
+  description: Customers API to demo Swagger 
+  termsOfService: None 
+  contact: 
+    name: Hinault Romaric 
+    url: http://rdonfack.developpez.com/ 
+    email: hinault@monsite.com 
+  license: 
+    name: Apache 2.0 
+    url: http://www.apache.org    
+schemes:
+- "https"
+- "http"
+paths:
+ 
+  taxe/{province}:
+    get:
+      summary: "Find taxe by province"
+      description: "Returns a single taxe"
+      operationId: "getTaxetByProvince"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "header"
+        name: "securityHeader"
+        schema:
+            type: "string"
+            format: "uuid"
+        required: true
+      - in: "path"
+        name: "province"
+        description: "code of province (2 character)"
+        required: true
+        type: "string"       
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Taxe"
+        400:
+          description: "Invalid province supplied"
+        404:
+          description: "taxe not found"       
+  /taxe/{province}:
+    post:
+       summary: "Add a new taxe to the province"
+       description: ""
+       operationId: "addTaxe"
+       consumes:
+        "application/json"
+       produces:
+        "application/json"
+       parameters:
+        - in: "header"
+          name: "securityHeader"
+          schema:
+            type: "string"
+            format: "uuid"
+          required: true
+        - in: "path"
+          name: "province"
+          description: "code of province (2 character)"
+          required: true
+          type: "string"   
+        - in: "body"
+          name: "body"
+          description: "taxe need to add to the province"
+          required: true
+          schema:
+           $ref: "#/definitions/Taxe"
+       
+       responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+definitions: 
+  User: 
+    type: object 
+    properties: 
+      code: 
+        type: string 
+        maxLength: 8
+      password: 
+        type: string  
+        maxLength: 8
+        pattern: '^\w{8}$'
+  Taxe: 
+    type: object 
+    properties: 
+      id:  
+        format: int32 
+        type: integer
+       
+      taxProv: 
+         format: double 
+         type: number
+         required: true
+      taxFed: 
+         format: double
+         type: number
+         required: true    
+      dateTx: 
+       format: date
+       type: string       
+
+    
+    
