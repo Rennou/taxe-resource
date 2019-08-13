@@ -11,12 +11,11 @@
 	<dependencies>
 
 
-
 		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-annotations</artifactId>
 			<version>1.5.22</version>
-			
+
 		</dependency>
 
 		<dependency>
@@ -29,13 +28,13 @@
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-core</artifactId>
 			<version>1.5.22</version>
-			
+
 			<exclusions>
-            <exclusion>
-                <groupId>org.hibernate.validator</groupId>
-                <artifactId>hibernate-validator</artifactId>
-            </exclusion>
-        </exclusions>
+				<exclusion>
+					<groupId>org.hibernate.validator</groupId>
+					<artifactId>hibernate-validator</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>io.swagger</groupId>
@@ -72,8 +71,8 @@
 							<generateSupportingFiles>false</generateSupportingFiles>
 							<configOptions>
 								<interfaceOnly>true</interfaceOnly>
-								 <performBeanValidation>true</performBeanValidation>
-                               <useBeanValidation>true</useBeanValidation>
+								<performBeanValidation>true</performBeanValidation>
+								<useBeanValidation>true</useBeanValidation>
 							</configOptions>
 						</configuration>
 					</execution>
